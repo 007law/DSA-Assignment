@@ -116,9 +116,9 @@ public class root extends javax.swing.JFrame {
                         .addGap(139, 139, 139)
                         .addComponent(jButton4))
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(684, 684, 684)
+                        .addGap(704, 704, 704)
                         .addComponent(jButton5)))
-                .addContainerGap(1149, Short.MAX_VALUE))
+                .addContainerGap(1129, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -134,9 +134,9 @@ public class root extends javax.swing.JFrame {
                             .addComponent(jButton2))
                         .addGap(93, 93, 93)
                         .addComponent(jButton3)))
-                .addGap(180, 180, 180)
+                .addGap(199, 199, 199)
                 .addComponent(jButton5)
-                .addGap(590, 590, 590))
+                .addGap(571, 571, 571))
         );
 
         gridBagConstraints = new java.awt.GridBagConstraints();
@@ -157,8 +157,8 @@ public class root extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
    JOptionPane.showMessageDialog(this,
-    "Eggs are not supposed to be green.",
-    "ThomasLaw",
+    "You are going to food & victims screen",
+    "Bye Bye",
     JOptionPane.WARNING_MESSAGE);
     }//GEN-LAST:event_jButton1ActionPerformed
 
