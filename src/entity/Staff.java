@@ -28,4 +28,57 @@ public class Staff {
     
   }
 
+    public static int getNextStaffID() {
+        return nextStaffID;
+    }
+
+    public static void setNextStaffID(int nextStaffID) {
+        Staff.nextStaffID = nextStaffID;
+    }
+
+    public String getStaffName() {
+        return staffName;
+    }
+
+    public void setStaffName(String staffName) {
+        this.staffName = staffName;
+    }
+
+    public int getStaffID() {
+        return staffID;
+    }
+
+
+    public String getStaffRequest() {
+        return staffRequest;
+    }
+
+    public void setStaffRequest(String staffRequest) {
+        this.staffRequest = staffRequest;
+    }
+
+    public String getStaffTask() {
+        return staffTask;
+    }
+
+    public void setStaffTask(String staffTask) {
+        this.staffTask = staffTask;
+    }
+
+    public String getStaffStatus() {
+        return staffStatus;
+    }
+
+    public void setStaffStatus(String staffStatus) {
+        this.staffStatus = staffStatus;
+    }
+
+    public String getStaffPosition() {
+        return staffPosition;
+    }
+
+    public void setStaffPosition(String staffPosition) {
+        this.staffPosition = staffPosition;
+    }
+
 }
