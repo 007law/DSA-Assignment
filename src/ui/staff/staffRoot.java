@@ -5,9 +5,16 @@
  */
 package ui.staff;
 
+import adt.LList;
+import entity.Staff;
+import static entity.StaticDataClass.staticStaffList;
 import java.awt.Image;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
+import ui.duty.addDuty;
+import ui.duty.removeDuty;
+import ui.duty.staffDutyAssign;
+import ui.duty.updateDuty;
 import ui.root;
 
 /**
@@ -16,15 +23,29 @@ import ui.root;
  */
 public class staffRoot extends javax.swing.JFrame {
 
-    /**
-     * Creates new form staffRoot
-     */
+    LList<Staff> staffList=new LList();
     public staffRoot() {
         initComponents();
          this.setLocationRelativeTo(null);
         this.setTitle("Disaster Management System");
         Image img = new ImageIcon(this.getClass().getResource("/image/logo.png")).getImage();
         this.setIconImage(img);
+    }
+    
+    public staffRoot(Staff newStaff){
+        staffList.add(newStaff);
+        staticStaffList.add(newStaff);
+        boolean getString=true;
+          initComponents();
+         this.setLocationRelativeTo(null);
+        this.setTitle("Disaster Management System");
+        Image img = new ImageIcon(this.getClass().getResource("/image/logo.png")).getImage();
+        this.setIconImage(img);
+        for(int i=0;i<staffList.getNumberOfEntries();i++){
+             System.out.println(staffList.getEntry(i+1).toString(getString));
+                        
+        }
+       
     }
 
     /**
@@ -82,16 +103,31 @@ public class staffRoot extends javax.swing.JFrame {
         jButton2.setBorder(null);
         jButton2.setBorderPainted(false);
         jButton2.setContentAreaFilled(false);
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
 
         jButton3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/button7.png"))); // NOI18N
         jButton3.setBorder(null);
         jButton3.setBorderPainted(false);
         jButton3.setContentAreaFilled(false);
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
+            }
+        });
 
         jButton4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/button8.png"))); // NOI18N
         jButton4.setBorder(null);
         jButton4.setBorderPainted(false);
         jButton4.setContentAreaFilled(false);
+        jButton4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton4ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout panel1Layout = new javax.swing.GroupLayout(panel1);
         panel1.setLayout(panel1Layout);
@@ -134,25 +170,45 @@ public class staffRoot extends javax.swing.JFrame {
 
         panel2.setBackground(new java.awt.Color(51, 51, 51));
 
-        jButton6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/button9.png"))); // NOI18N
+        jButton6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/button13.png"))); // NOI18N
         jButton6.setBorder(null);
         jButton6.setBorderPainted(false);
         jButton6.setContentAreaFilled(false);
+        jButton6.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton6ActionPerformed(evt);
+            }
+        });
 
         jButton7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/button10.png"))); // NOI18N
         jButton7.setBorderPainted(false);
         jButton7.setContentAreaFilled(false);
+        jButton7.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton7ActionPerformed(evt);
+            }
+        });
 
         jButton8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/button11.png"))); // NOI18N
         jButton8.setBorder(null);
         jButton8.setBorderPainted(false);
         jButton8.setContentAreaFilled(false);
+        jButton8.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton8ActionPerformed(evt);
+            }
+        });
 
         jButton9.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/button12.png"))); // NOI18N
         jButton9.setToolTipText("");
         jButton9.setBorder(null);
         jButton9.setBorderPainted(false);
         jButton9.setContentAreaFilled(false);
+        jButton9.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton9ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout panel2Layout = new javax.swing.GroupLayout(panel2);
         panel2.setLayout(panel2Layout);
@@ -161,16 +217,16 @@ public class staffRoot extends javax.swing.JFrame {
             .addGroup(panel2Layout.createSequentialGroup()
                 .addGroup(panel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(panel2Layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jButton6))
-                    .addGroup(panel2Layout.createSequentialGroup()
                         .addGap(31, 31, 31)
-                        .addComponent(jButton7)))
+                        .addComponent(jButton7))
+                    .addGroup(panel2Layout.createSequentialGroup()
+                        .addGap(41, 41, 41)
+                        .addComponent(jButton6)))
                 .addGap(49, 49, 49)
                 .addGroup(panel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jButton9)
                     .addComponent(jButton8))
-                .addContainerGap(40, Short.MAX_VALUE))
+                .addContainerGap(79, Short.MAX_VALUE))
         );
         panel2Layout.setVerticalGroup(
             panel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -268,7 +324,8 @@ public class staffRoot extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton5ActionPerformed
 
     private void jButton10ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton10ActionPerformed
-      root back=new root();
+      boolean backScreen=true;
+        root back=new root(backScreen);
       back.setVisible(true);
       this.dispose();
     }//GEN-LAST:event_jButton10ActionPerformed
@@ -278,6 +335,48 @@ public class staffRoot extends javax.swing.JFrame {
        next.setVisible(true);
        this.dispose();
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+      viewStaff viewStaffScreen=new viewStaff();
+      viewStaffScreen.setVisible(true);
+     this.dispose();
+    }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+       updateStaff updateStaffScreen=new updateStaff();
+       updateStaffScreen.setVisible(true);
+       this.dispose();
+    }//GEN-LAST:event_jButton3ActionPerformed
+
+    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+      removeStaff removeStaffScreen=new removeStaff();
+      removeStaffScreen.setVisible(true);
+      this.dispose();
+    }//GEN-LAST:event_jButton4ActionPerformed
+
+    private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
+      addDuty addDutyScreen=new addDuty();
+      addDutyScreen.setVisible(true);
+      this.dispose();
+    }//GEN-LAST:event_jButton6ActionPerformed
+
+    private void jButton8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton8ActionPerformed
+        updateDuty updateDutyScreen=new updateDuty();
+        updateDutyScreen.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_jButton8ActionPerformed
+
+    private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
+        staffDutyAssign assignDutyScreen=new staffDutyAssign();
+        assignDutyScreen.setVisible(true);
+         this.dispose();
+    }//GEN-LAST:event_jButton7ActionPerformed
+
+    private void jButton9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton9ActionPerformed
+       removeDuty removeDutyScreen=new removeDuty();
+       removeDutyScreen.setVisible(true);
+       this.dispose();
+    }//GEN-LAST:event_jButton9ActionPerformed
 
     /**
      * @param args the command line arguments

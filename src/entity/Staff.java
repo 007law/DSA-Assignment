@@ -5,20 +5,29 @@
  */
 package entity;
 
+import adt.LList;
+import adt.Node;
+import static entity.StaticDataClass.staticStaffList;
+
+
 /**
  *
  * @author ThomasLaw
  */
-public class Staff {
-    private static int nextStaffID=1000;
+public class Staff implements StaffInterface<Staff>{
+  private static int nextStaffID=5300;
   private String staffName;
   private int staffID;
-  private String staffRequest;
+  private LList staffRequest;
   private String staffTask;
   private String staffStatus;
   private String staffPosition;
   
-  public Staff(int staffID,String staffName, String staffRequest, String staffTask, String staffStatus, String staffPosition) {
+  
+  public Staff(){
+       this.staffID=nextStaffID++;
+  }
+  public Staff(String staffName, LList staffRequest, String staffTask, String staffStatus, String staffPosition) {
     this.staffID=nextStaffID++;
     this.staffRequest=staffRequest;
     this.staffName=staffName;
@@ -49,11 +58,11 @@ public class Staff {
     }
 
 
-    public String getStaffRequest() {
+    public LList getStaffRequest() {
         return staffRequest;
     }
 
-    public void setStaffRequest(String staffRequest) {
+    public void setStaffRequest(LList staffRequest) {
         this.staffRequest = staffRequest;
     }
 
@@ -80,5 +89,59 @@ public class Staff {
     public void setStaffPosition(String staffPosition) {
         this.staffPosition = staffPosition;
     }
+    
+    public String toString(){
+        return this.staffName;
+         }
+    
+     public String toString(boolean getString){
+         return "\n"+this.staffID+"\n"+this.staffName+"\n"+this.staffRequest.toString()+this.staffPosition+"\n"+this.staffTask+"\n"+this.staffStatus;
+          
+    }
+
+
+    public void sortForStatus() {
+       boolean sorted = false;
+    for (int pass = 1; pass < staticStaffList.getNumberOfEntries() && !sorted; pass++) {
+      sorted = true;
+      for (int index = 0; index < staticStaffList.getNumberOfEntries() - pass; index++) {
+        String status1=staticStaffList.getEntry(index+1).getStaffStatus();
+        String status2=staticStaffList.getEntry(index+2).getStaffStatus();
+        //System.out.println(tempName+"\n"+tempName2);
+        if (status1.compareTo(status2)>0) {
+          swap(index+1, index + 2); 
+          sorted = false; 
+        }
+      } 																// trace statement
+    } 
+    
+    }
+    public static void swap(int first, int second) {
+    staticStaffList.swap(first, second);
+  }
+    public void sortForName(){
+     boolean sorted = false;
+    for (int pass = 1; pass < staticStaffList.getNumberOfEntries() && !sorted; pass++) {
+      sorted = true;
+      for (int index = 0; index < staticStaffList.getNumberOfEntries() - pass; index++) {
+        String tempName=staticStaffList.getEntry(index+1).getStaffName();
+        String tempName2=staticStaffList.getEntry(index+2).getStaffName();
+        //System.out.println(tempName+"\n"+tempName2);
+        if (tempName.compareTo(tempName2)>0) {
+          swap(index+1, index + 2); 
+          sorted = false; 
+        }
+      } 																// trace statement
+    } 
+  
+    }
+
+
+
+  
+
+    
+
+   
 
 }

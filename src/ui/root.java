@@ -5,6 +5,7 @@
  */
 package ui;
 
+import entity.StaticDataClass;
 import ui.staff.staffRoot;
 import java.awt.Image;
 import javax.swing.ImageIcon;
@@ -28,6 +29,18 @@ public class root extends javax.swing.JFrame {
         this.setTitle("Disaster Management System");
         Image img = new ImageIcon(this.getClass().getResource("/image/logo.png")).getImage();
         this.setIconImage(img);
+        StaticDataClass staticDataClass=new StaticDataClass();
+    }
+    public root(boolean backScreen) {
+
+
+    
+        initComponents();
+        this.setLocationRelativeTo(null);
+        this.setTitle("Disaster Management System");
+        Image img = new ImageIcon(this.getClass().getResource("/image/logo.png")).getImage();
+        this.setIconImage(img);
+        
     }
 
     /**
