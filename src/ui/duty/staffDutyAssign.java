@@ -16,10 +16,13 @@ import java.awt.Image;
 import java.awt.event.KeyEvent;
 import java.text.SimpleDateFormat;
 import java.util.GregorianCalendar;
+import java.util.concurrent.TimeUnit;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.ImageIcon;
 import javax.swing.JComboBox;
 import javax.swing.JOptionPane;
+import org.joda.time.DateTime;
+import org.joda.time.Interval;
 import ui.staff.JTextFieldLimit;
 import ui.staff.staffRoot;
 
@@ -36,6 +39,7 @@ public class staffDutyAssign extends javax.swing.JFrame {
         this.setTitle("Disaster Management System");
         Image img = new ImageIcon(this.getClass().getResource("/image/logo.png")).getImage();
         this.setIconImage(img);
+        
         DefaultComboBoxModel tempStaffList=new DefaultComboBoxModel();
        
          for(int i=0;i<staticStaffList.getNumberOfEntries();i++){ 
@@ -94,6 +98,7 @@ public class staffDutyAssign extends javax.swing.JFrame {
         jLabel13 = new javax.swing.JLabel();
         jComboBox3 = new javax.swing.JComboBox<>();
         jButton1 = new javax.swing.JButton();
+        jButton2 = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -250,6 +255,13 @@ public class staffDutyAssign extends javax.swing.JFrame {
             }
         });
 
+        jButton2.setText("Get Day");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -258,7 +270,9 @@ public class staffDutyAssign extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(542, 542, 542)
+                        .addGap(389, 389, 389)
+                        .addComponent(jButton2)
+                        .addGap(74, 74, 74)
                         .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jButton10))
@@ -305,7 +319,7 @@ public class staffDutyAssign extends javax.swing.JFrame {
                         .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 294, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(1132, Short.MAX_VALUE))
+                .addContainerGap(1134, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -346,7 +360,9 @@ public class staffDutyAssign extends javax.swing.JFrame {
                             .addComponent(jComboBox3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(140, 140, 140)
                         .addComponent(jButton10))
-                    .addComponent(jButton1))
+                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jButton1)
+                        .addComponent(jButton2)))
                 .addContainerGap(517, Short.MAX_VALUE))
         );
 
@@ -448,6 +464,8 @@ public class staffDutyAssign extends javax.swing.JFrame {
       GregorianCalendar beginDate=new GregorianCalendar(Integer.parseInt(jTextField3.getText()),(Integer.parseInt(jTextField2.getText())-1),Integer.parseInt(jTextField1.getText()));
       GregorianCalendar endDate=new GregorianCalendar(Integer.parseInt(jTextField6.getText()),(Integer.parseInt(jTextField5.getText())-1),Integer.parseInt(jTextField4.getText()));
       SimpleDateFormat sdf=new SimpleDateFormat("dd-MM-yyyy");
+      
+      
        Object[] options = {"Yes","No"};
          int choice = JOptionPane.showOptionDialog(null, //Component parentComponent
                                "Assign New Duty to " +jComboBox1.getSelectedItem().toString()
@@ -476,6 +494,37 @@ public class staffDutyAssign extends javax.swing.JFrame {
     
       
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+      GregorianCalendar beginDate=new GregorianCalendar(Integer.parseInt(jTextField3.getText()),(Integer.parseInt(jTextField2.getText())-1),Integer.parseInt(jTextField1.getText()));
+      GregorianCalendar endDate=new GregorianCalendar(Integer.parseInt(jTextField6.getText()),(Integer.parseInt(jTextField5.getText())-1),Integer.parseInt(jTextField4.getText()));
+      SimpleDateFormat sdf=new SimpleDateFormat("dd-MM-yyyy");
+      SimpleDateFormat dayFormat=new SimpleDateFormat("EEEE");
+     LList<String>dutyDay=new LList();
+     long diff;
+     int diffDay=0;
+     try { // Method for find out the range of between two date and convert into Integer
+     diff=endDate.getTimeInMillis()- beginDate.getTimeInMillis();
+      diffDay=(int)TimeUnit.DAYS.convert(diff, TimeUnit.MILLISECONDS)+1;
+     System.out.println ("Days: " + (TimeUnit.DAYS.convert(diff, TimeUnit.MILLISECONDS)+1));
+            } catch (Exception e) {
+    e.printStackTrace();
+        }   
+     beginDate.set(GregorianCalendar.DATE, Integer.parseInt(jTextField1.getText())+1);
+     System.out.println (sdf.format(beginDate.getTime()));
+     
+     //beginDate.add(GregorianCalendar.DATE, Integer.parseInt(jTextField1.getText()+1));
+     //System.out.println (sdf.format(beginDate.getTime()));
+     
+//        for(int i=0;i<diffDay;i++){
+//           dutyDay.add(dayFormat.format(beginDate));
+//           beginDate.set(GregorianCalendar.DATE, Integer.parseInt(jTextField1.getText())+1);
+//        }
+     
+     
+     
+     
+    }//GEN-LAST:event_jButton2ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -515,6 +564,7 @@ public class staffDutyAssign extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton10;
+    private javax.swing.JButton jButton2;
     private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JComboBox<String> jComboBox2;
     private javax.swing.JComboBox<String> jComboBox3;
