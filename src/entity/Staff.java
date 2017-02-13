@@ -24,6 +24,8 @@ public class Staff implements StaffInterface<Staff>{
   private String staffPosition;
   private String TelNoForStaff;
   private String IdentificalNo;
+
+
   
   
   public Staff(){
@@ -48,6 +50,7 @@ public class Staff implements StaffInterface<Staff>{
         this.staffPosition = staffPosition;
         this.TelNoForStaff = staffTel;
         this.IdentificalNo = staffIC;
+
     }
 
   
