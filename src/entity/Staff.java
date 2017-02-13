@@ -24,7 +24,8 @@ public class Staff implements StaffInterface<Staff>{
   private String staffPosition;
   private String staffHomePhoneNo;
   private String staffMalaysiaResidentNRIC;
-  
+  private int age;
+
   
   public Staff(){
        this.staffID=nextStaffID++;
@@ -48,6 +49,7 @@ public class Staff implements StaffInterface<Staff>{
         this.staffPosition = staffPosition;
         this.staffHomePhoneNo = staffTel;
         this.staffMalaysiaResidentNRIC = staffIC;
+
     }
 
   
