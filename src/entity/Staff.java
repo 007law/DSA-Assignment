@@ -25,6 +25,7 @@ public class Staff implements StaffInterface<Staff>{
   private String staffHomePhoneNo;
   private String staffMalaysiaResidentNRIC;
   private int age;
+  private String zodiac;
 
   
   public Staff(){
